@@ -20,6 +20,11 @@ class AlertController: UIViewController {
     weak var delegate: AlertControllerDelegate?
     var overlayIsEnabled: Bool?
     
+    deinit {
+        baseAlert.removeView(viewController: self)
+        removeFromParentViewController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
