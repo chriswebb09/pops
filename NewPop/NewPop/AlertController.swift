@@ -21,7 +21,6 @@ class AlertController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //baseAlert.showAlert(viewController: self)
     }
     
     func setAlert(alert: Alert, viewController: UIViewController) {
@@ -43,5 +42,4 @@ class AlertController: UIViewController {
         print("didRemoveFromParent()")
         delegate?.didRemoveFromParent()
     }
-    
 }

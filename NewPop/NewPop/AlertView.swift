@@ -15,7 +15,6 @@ protocol AlertViewDelegate: class {
 }
 
 extension AlertViewDelegate {
-    
     func didTapSingleButton(_ sender: UIButton) {
         print("not implemented")
     }
@@ -24,7 +23,6 @@ extension AlertViewDelegate {
         print("not implemented")
     }
 }
-
 
 public final class AlertView: UIView {
     
@@ -79,12 +77,10 @@ public final class AlertView: UIView {
         }
     }
     
-    
     func addContainerOverlay() {
         overlay.backgroundColor = UIColor.black
         overlay.alpha = 0.2
         overlay.frame = containerView.frame
-       // containerView = overlay
         containerView.addSubview(overlay)
         containerView.bringSubview(toFront: overlay)
         containerView.bringSubview(toFront: loadingView)
@@ -93,9 +89,6 @@ public final class AlertView: UIView {
     func removeOverlay() {
         overlay.removeFromSuperview()
     }
-    
-    
-    
     
     func setupAlert(alert: Alert) {
         setAlertStyle(style: alert.alertStyle)
