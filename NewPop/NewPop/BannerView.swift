@@ -30,7 +30,7 @@ class BannerView: UIView {
         _contentLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
     }
     
-    internal func setContent(contentString: String) {
+    internal func setTitle(contentString: String) {
         _contentLabel.text = contentString
     }
     
@@ -46,5 +46,6 @@ class BannerView: UIView {
         _contentLabel.textColor = fontColor
     }
 }
+
 
 

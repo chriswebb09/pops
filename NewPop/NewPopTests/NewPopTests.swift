@@ -26,14 +26,14 @@ class NewPopTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testController() {
+    func testViewController() {
         var viewController = ViewController()
         viewController.viewDidLoad()
         XCTAssert(viewController.alertController != nil)
         XCTAssert(viewController.alertController.delegate != nil)
     }
     
-    func testAlertController() {
+    func testAlertTitle() {
         let viewController = ViewController()
         viewController.viewDidLoad()
         let alertController = AlertController()
@@ -41,6 +41,8 @@ class NewPopTests: XCTestCase {
         let alert =  Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "Next Alert", alertContent: "Next Alert", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "HelveticaNeue", size: 17)!, contentFontColor: UIColor.black)
         alertController.setAlert(alert: alert, viewController: viewController)
         XCTAssert(alertController.baseAlert != nil, "BaseAlert is not nil")
+        print(alertController.baseAlert.testTitle())
+        XCTAssert(alertController.baseAlert.testTitle() == "Two Button Alert", "\(alertController.baseAlert.testTitle())")
     }
     
     func testPerformanceExample() {

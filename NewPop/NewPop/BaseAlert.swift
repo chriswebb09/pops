@@ -93,10 +93,12 @@ class BaseAlert: UIView {
     }
     
     public func setTitle(titleString:String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
-        banner.setContent(contentString: titleString)
+        print("here")
+        banner.setTitle(contentString: titleString)
         banner.setBannerColor(bannerColor: backgroundColor)
         banner.setFont(font: font)
         banner.setFontColor(fontColor: fontColor)
+        print("\(titleString)")
     }
     
     public func setContent(contentString: String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {

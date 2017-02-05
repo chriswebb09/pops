@@ -17,15 +17,34 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.alert = Alert(alertType: .oneButton, alertStyle: .boxedBordered, alertTitle: "New Alert", alertContent: "Alert Content", buttonTitles: ["Button"], buttonColors: [UIColor.red], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "Avenir-Heavy", size: 17)!, contentFontColor: UIColor.black)
-               alertController.setAlert(alert:self.alert, viewController: self)
-        alertController.baseAlert.singleButton.addTarget(self, action: #selector(didTapSingleButton(_:)), for: .touchUpInside)
+        setupAlert()
+        alertController.setAlert(alert: self.alert,
+                                 viewController: self)
+        alertController.baseAlert.singleButton.addTarget(self,
+                                                         action: #selector(didTapSingleButton(_:)),
+                                                         for: .touchUpInside)
         addControllerAsChild(viewController: alertController)
+    }
+    
+    func setupAlert() {
+        self.alert = Alert(alertType: .oneButton,
+                           alertStyle: .boxedBordered,
+                           alertTitle: "New Alert",
+                           alertContent: "Alert Content",
+                           buttonTitles: ["Button"],
+                           buttonColors: [UIColor.red],
+                           buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           titleColor: UIColor.purple,
+                           titleFontColor: UIColor.white,
+                           contentBackground: UIColor.green,
+                           contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           contentFontColor: UIColor.black)
     }
     
 }
 
-extension ViewController: AlertControllerDelegate, AlertViewDelegate {
+extension ViewController: AlertViewDelegate {
     
     func addControllerAsChild(viewController: UIViewController) {
         alertController.delegate = self
@@ -55,7 +74,19 @@ extension ViewController: AlertControllerDelegate, AlertViewDelegate {
         print("singleTap")
         alertController.removeFromParentViewController()
         alertController.baseAlert.removeView(viewController: self)
-        self.alert = Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "New Alert", alertContent: "Alert Content", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "Avenir-Heavy", size: 17)!, contentFontColor: UIColor.black)
+        self.alert = Alert(alertType: .twoButton,
+                           alertStyle: .roundedBordered,
+                           alertTitle: "New Alert",
+                           alertContent: "Alert Content",
+                           buttonTitles: ["Left Button", "Right Button"],
+                           buttonColors: [UIColor.red, UIColor.blue],
+                           buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           titleColor: UIColor.purple,
+                           titleFontColor: UIColor.white,
+                           contentBackground: UIColor.lightGray,
+                           contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           contentFontColor: UIColor.black)
         alertController.setAlert(alert: self.alert, viewController: self)
         addControllerAsChild(viewController: alertController)
         alertController.addOverlay(added: true)
@@ -64,8 +95,28 @@ extension ViewController: AlertControllerDelegate, AlertViewDelegate {
     }
     
     dynamic func handleTap(sender: UITapGestureRecognizer? = nil) {
-        self.alert = Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "Next Alert", alertContent: "Next Alert", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "HelveticaNeue", size: 17)!, contentFontColor: UIColor.black)
+        self.alert = Alert(alertType: .twoButton,
+                           alertStyle: .roundedBordered,
+                           alertTitle: "Next Alert",
+                           alertContent: "Next Alert",
+                           buttonTitles: ["Left Button", "Right Button"],
+                           buttonColors: [UIColor.red, UIColor.blue],
+                           buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                           titleColor: UIColor.purple,
+                           titleFontColor: UIColor.white,
+                           contentBackground: UIColor.lightGray,
+                           contentFont: UIFont(name: "HelveticaNeue", size: 17)!,
+                           contentFontColor: UIColor.black)
         alertController.setAlert(alert: self.alert, viewController: self)
+    }
+}
+
+
+extension ViewController: AlertControllerDelegate {
+    
+    func addAlertControllerDelegate() {
+        alertController.delegate = self
     }
     
     func didRemoveFromParent() {
@@ -77,8 +128,8 @@ extension ViewController: AlertControllerDelegate, AlertViewDelegate {
     }
 }
 
-
 extension ViewController: UIGestureRecognizerDelegate {
+    
     func addGestureToView(view: UIView) {
         let tap = UIGestureRecognizer(target: self, action: #selector(didRemoveFromParent))
         tap.delegate = self
