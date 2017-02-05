@@ -18,33 +18,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         setupAlert()
-        alertController.setAlert(alert: self.alert,
-                                 viewController: self)
-        alertController.baseAlert.singleButton.addTarget(self,
-                                                         action: #selector(didTapSingleButton(_:)),
-                                                         for: .touchUpInside)
+        alertController.setAlert(alert: self.alert, viewController: self)
+        alertController.baseAlert.singleButton.addTarget(self, action: #selector(didTapSingleButton(_:)), for: .touchUpInside)
         addControllerAsChild(viewController: alertController)
     }
-    
-    func setupAlert() {
-        self.alert = Alert(alertType: .oneButton,
-                           alertStyle: .boxedBordered,
-                           alertTitle: "New Alert",
-                           alertContent: "Alert Content",
-                           buttonTitles: ["Button"],
-                           buttonColors: [UIColor.red],
-                           buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                           titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                           titleColor: UIColor.purple,
-                           titleFontColor: UIColor.white,
-                           contentBackground: UIColor.green,
-                           contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                           contentFontColor: UIColor.black)
-    }
-    
 }
 
 extension ViewController: AlertViewDelegate {
+    
+    func setupAlert() {
+        self.alert =
+            Alert(alertType: .oneButton,
+                  alertStyle: .boxedBordered,
+                  alertTitle: "New Alert",
+                  alertContent: "Alert Content",
+                  buttonTitles: ["Button"],
+                  buttonColors: [UIColor.red],
+                  buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                  titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                  titleColor: UIColor.purple,
+                  titleFontColor: UIColor.white,
+                  contentBackground: UIColor.green,
+                  contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
+                  contentFontColor: UIColor.black)
+    }
+    
     
     func addControllerAsChild(viewController: UIViewController) {
         alertController.delegate = self
@@ -84,12 +82,12 @@ extension ViewController: AlertViewDelegate {
                            titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
                            titleColor: UIColor.purple,
                            titleFontColor: UIColor.white,
-                           contentBackground: UIColor.lightGray,
+                           contentBackground: UIColor.white,
                            contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
                            contentFontColor: UIColor.black)
+        alertController.addOverlay(added: true)
         alertController.setAlert(alert: self.alert, viewController: self)
         addControllerAsChild(viewController: alertController)
-        alertController.addOverlay(added: true)
         alertController.baseAlert.leftButton.addTarget(self, action: #selector(didTapLeftButton(_:)), for: .touchUpInside)
         alertController.baseAlert.rightButton.addTarget(self, action: #selector(didTapRightButton(_:)), for: .touchUpInside)
     }
@@ -119,11 +117,11 @@ extension ViewController: AlertControllerDelegate {
         alertController.delegate = self
     }
     
-    func didRemoveFromParent() {
+    dynamic func didRemoveFromParent() {
         print("removed")
     }
     
-    func didMoveToParent() {
+    dynamic func didMoveToParent() {
         print("moved")
     }
 }

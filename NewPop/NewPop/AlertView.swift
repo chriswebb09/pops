@@ -70,15 +70,15 @@ public final class AlertView: UIView {
         case .boxed:
             loadingView.layer.cornerRadius = 0
         case .rounded:
-            loadingView.layer.cornerRadius = 6
+            loadingView.layer.cornerRadius = 5
         case .boxedBordered:
-            loadingView.layer.borderWidth = 2
+            loadingView.layer.borderWidth = 1
             loadingView.layer.borderColor = UIColor.black.cgColor
             loadingView.layer.cornerRadius = 0
         case .roundedBordered:
-            loadingView.layer.borderWidth = 2
+            loadingView.layer.borderWidth = 1
             loadingView.layer.borderColor = UIColor.black.cgColor
-            loadingView.layer.cornerRadius = 6
+            loadingView.layer.cornerRadius = 5
         }
     }
     

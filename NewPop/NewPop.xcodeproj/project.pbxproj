@@ -24,6 +24,8 @@
 		A79B5A6A1E4792C2001C6C8D /* TwoButtonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B5A691E4792C2001C6C8D /* TwoButtonAlert.swift */; };
 		A79B5A6C1E47933A001C6C8D /* BaseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B5A6B1E47933A001C6C8D /* BaseAlert.swift */; };
 		A79B5A6E1E479BFB001C6C8D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B5A6D1E479BFB001C6C8D /* AlertView.swift */; };
+		A7E039D51E47EADD0098956B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E039D41E47EADD0098956B /* Constants.swift */; };
+		A7E039D71E47EB070098956B /* ButtonTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E039D61E47EB070098956B /* ButtonTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		A79B5A691E4792C2001C6C8D /* TwoButtonAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoButtonAlert.swift; sourceTree = "<group>"; };
 		A79B5A6B1E47933A001C6C8D /* BaseAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAlert.swift; sourceTree = "<group>"; };
 		A79B5A6D1E479BFB001C6C8D /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		A7E039D41E47EADD0098956B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A7E039D61E47EB070098956B /* ButtonTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				A79B5A671E4792B7001C6C8D /* OneButtonAlert.swift */,
 				A79B5A691E4792C2001C6C8D /* TwoButtonAlert.swift */,
 				A79B5A6B1E47933A001C6C8D /* BaseAlert.swift */,
+				A7E039D41E47EADD0098956B /* Constants.swift */,
+				A7E039D61E47EB070098956B /* ButtonTypes.swift */,
 			);
 			path = NewPop;
 			sourceTree = "<group>";
@@ -302,6 +308,8 @@
 				A79B5A6E1E479BFB001C6C8D /* AlertView.swift in Sources */,
 				A79B5A6A1E4792C2001C6C8D /* TwoButtonAlert.swift in Sources */,
 				A79B5A5E1E47901F001C6C8D /* AlertStyle.swift in Sources */,
+				A7E039D51E47EADD0098956B /* Constants.swift in Sources */,
+				A7E039D71E47EB070098956B /* ButtonTypes.swift in Sources */,
 				A79B5A5C1E479010001C6C8D /* Alert.swift in Sources */,
 				A79B5A2C1E478FD9001C6C8D /* AppDelegate.swift in Sources */,
 			);
