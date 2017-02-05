@@ -47,6 +47,9 @@ class ViewController: UIViewController, AlertControllerDelegate, AlertViewDelega
         self.alert = Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "New Alert", alertContent: "Alert Content", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "Avenir-Heavy", size: 17)!, contentFontColor: UIColor.black)
         alertController.setAlert(alert: self.alert, viewController: self)
         addControllerAsChild(viewController: alertController)
+        alertController.baseAlert.addContainerOverlay()
+        alertController.baseAlert.leftButton.addTarget(self, action: #selector(didTapLeftButton(_:)), for: .touchUpInside)
+        alertController.baseAlert.rightButton.addTarget(self, action: #selector(didTapRightButton(_:)), for: .touchUpInside)
     }
     
     dynamic func handleTap(sender: UITapGestureRecognizer? = nil) {

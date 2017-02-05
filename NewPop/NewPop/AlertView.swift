@@ -77,6 +77,18 @@ public final class AlertView: UIView {
         }
     }
     
+    
+    func addContainerOverlay() {
+        var overlay = UIView()
+        overlay.backgroundColor = UIColor.black
+        overlay.alpha = 0.2
+        overlay.frame = containerView.frame
+       // containerView = overlay
+        containerView.addSubview(overlay)
+        containerView.bringSubview(toFront: overlay)
+        containerView.bringSubview(toFront: loadingView)
+    }
+    
     func setupAlert(alert: Alert) {
         setAlertStyle(style: alert.alertStyle)
         switch alert.alertType {
@@ -107,7 +119,6 @@ public final class AlertView: UIView {
     public func showAlert(viewController: UIViewController) {
         containerView.isHidden = false
         containerView.frame = UIScreen.main.bounds
-        //containerView.backgroundColor = UIColor.lightGray
         containerView.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
         _addLoadingView()
         _addSubviews(viewController: viewController)
