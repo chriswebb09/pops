@@ -35,9 +35,11 @@ class ViewController: UIViewController, AlertControllerDelegate, AlertViewDelega
     
     dynamic func didTapLeftButton(_ sender: UIButton) {
         print("left tap")
+        alertController.baseAlert.removeOverlay()
     }
     
     dynamic func didTapRightButton(_ sender: UIButton) {
+        alertController.baseAlert.addContainerOverlay()
         print("right tap")
     }
     

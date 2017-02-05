@@ -40,6 +40,8 @@ public final class AlertView: UIView {
         return containerView
     }()
     
+    var overlay = UIView()
+    
     var loadingView: BaseAlert = {
         let loadingView = BaseAlert()
         loadingView.layoutSubviews()
@@ -79,7 +81,6 @@ public final class AlertView: UIView {
     
     
     func addContainerOverlay() {
-        var overlay = UIView()
         overlay.backgroundColor = UIColor.black
         overlay.alpha = 0.2
         overlay.frame = containerView.frame
@@ -88,6 +89,13 @@ public final class AlertView: UIView {
         containerView.bringSubview(toFront: overlay)
         containerView.bringSubview(toFront: loadingView)
     }
+    
+    func removeOverlay() {
+        overlay.removeFromSuperview()
+    }
+    
+    
+    
     
     func setupAlert(alert: Alert) {
         setAlertStyle(style: alert.alertStyle)
