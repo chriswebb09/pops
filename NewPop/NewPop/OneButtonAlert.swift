@@ -12,9 +12,4 @@ class OneButtonAlert: BaseAlert {
     
     var singleButton: UIButton!
     
-    func setupButtons(button: [UIButton], color: [UIColor]) {
-        actions.buttons = button
-        actions.setupButtons(buttonColors: color)
-    }
-  
 }

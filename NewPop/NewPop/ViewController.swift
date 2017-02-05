@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, AlertControllerDelegate, AlertViewDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController {
     
     var alertController = AlertController()
     
@@ -18,14 +18,18 @@ class ViewController: UIViewController, AlertControllerDelegate, AlertViewDelega
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.alert = Alert(alertType: .oneButton, alertStyle: .boxedBordered, alertTitle: "New Alert", alertContent: "Alert Content", buttonTitles: ["Button"], buttonColors: [UIColor.red], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "Avenir-Heavy", size: 17)!, contentFontColor: UIColor.black)
-        alertController.delegate = self
-        alertController.baseAlert.delegate = self
-        alertController.setAlert(alert:self.alert, viewController: self)
+               alertController.setAlert(alert:self.alert, viewController: self)
         alertController.baseAlert.singleButton.addTarget(self, action: #selector(didTapSingleButton(_:)), for: .touchUpInside)
         addControllerAsChild(viewController: alertController)
     }
     
+}
+
+extension ViewController: AlertControllerDelegate, AlertViewDelegate {
+    
     func addControllerAsChild(viewController: UIViewController) {
+        alertController.delegate = self
+        alertController.baseAlert.delegate = self
         addChildViewController(viewController)
         view.addSubview(viewController.view)
         viewController.view.frame = view.bounds
@@ -36,34 +40,34 @@ class ViewController: UIViewController, AlertControllerDelegate, AlertViewDelega
     dynamic func didTapLeftButton(_ sender: UIButton) {
         print("left tap")
         alertController.baseAlert.removeOverlay()
+        alertController.baseAlert.removeView(viewController: self)
+        alertController.removeFromParentViewController()
+        addGestureToView(view: view)
     }
     
     dynamic func didTapRightButton(_ sender: UIButton) {
-        alertController.baseAlert.addContainerOverlay()
+        alertController.addOverlay(added: true)
+        alertController.baseAlert.rightButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
         print("right tap")
     }
     
     dynamic func didTapSingleButton(_ sender: UIButton) {
         print("singleTap")
         alertController.removeFromParentViewController()
+        alertController.baseAlert.removeView(viewController: self)
         self.alert = Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "New Alert", alertContent: "Alert Content", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "Avenir-Heavy", size: 17)!, contentFontColor: UIColor.black)
         alertController.setAlert(alert: self.alert, viewController: self)
         addControllerAsChild(viewController: alertController)
-        alertController.baseAlert.addContainerOverlay()
+        alertController.addOverlay(added: true)
         alertController.baseAlert.leftButton.addTarget(self, action: #selector(didTapLeftButton(_:)), for: .touchUpInside)
         alertController.baseAlert.rightButton.addTarget(self, action: #selector(didTapRightButton(_:)), for: .touchUpInside)
     }
     
     dynamic func handleTap(sender: UITapGestureRecognizer? = nil) {
-        alertController.baseAlert.showAlert(viewController: self)
+        self.alert = Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "Next Alert", alertContent: "Next Alert", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "HelveticaNeue", size: 17)!, contentFontColor: UIColor.black)
+        alertController.setAlert(alert: self.alert, viewController: self)
     }
     
-    dynamic func handleTapTwo(sender: UITapGestureRecognizer? = nil) {
-        alertController.baseAlert.containerView.backgroundColor = UIColor.green
-        alertController.baseAlert.containerView.alpha = 1
-        alertController.baseAlert.showAlert(viewController: self)
-    }
-     
     func didRemoveFromParent() {
         print("removed")
     }
@@ -73,3 +77,11 @@ class ViewController: UIViewController, AlertControllerDelegate, AlertViewDelega
     }
 }
 
+
+extension ViewController: UIGestureRecognizerDelegate {
+    func addGestureToView(view: UIView) {
+        let tap = UIGestureRecognizer(target: self, action: #selector(didRemoveFromParent))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+    }
+}

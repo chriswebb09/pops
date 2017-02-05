@@ -45,7 +45,7 @@ class BaseAlert: UIView {
         return contentView
     }()
     
-    var actions: ActionsView = {
+    private var actions: ActionsView = {
         let actionsView = ActionsView()
         actionsView.layoutSubviews()
         actionsView.backgroundColor = UIColor.lightGray

@@ -18,9 +18,15 @@ class AlertController: UIViewController {
     var baseAlert: AlertView = AlertView()
     var alert: Alert!
     weak var delegate: AlertControllerDelegate?
+    var overlayIsEnabled: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func addOverlay(added: Bool) {
+        overlayIsEnabled = added
+        baseAlert.addContainerOverlay(isSet: overlayIsEnabled!)
     }
     
     func setAlert(alert: Alert, viewController: UIViewController) {

@@ -30,6 +30,11 @@ public final class AlertView: UIView {
     var rightButton: UIButton!
     var singleButton: UIButton!
     
+    
+    deinit {
+        loadingView.removeFromSuperview()
+    }
+    
     weak var delegate: AlertViewDelegate?
     
     public var containerView: UIView = {
@@ -77,16 +82,19 @@ public final class AlertView: UIView {
         }
     }
     
-    func addContainerOverlay() {
-        overlay.backgroundColor = UIColor.black
-        overlay.alpha = 0.2
-        overlay.frame = containerView.frame
-        containerView.addSubview(overlay)
-        containerView.bringSubview(toFront: overlay)
-        containerView.bringSubview(toFront: loadingView)
+    func addContainerOverlay(isSet: Bool) {
+        if isSet {
+            overlay.backgroundColor = UIColor.black
+            overlay.alpha = 0.2
+            overlay.frame = containerView.frame
+            containerView.addSubview(overlay)
+            containerView.bringSubview(toFront: overlay)
+            containerView.bringSubview(toFront: loadingView)
+        }
     }
     
     func removeOverlay() {
+        
         overlay.removeFromSuperview()
     }
     
@@ -101,8 +109,7 @@ public final class AlertView: UIView {
             loadingView.setTitle(titleString: alert.alertTitle, font: alert.buttonFont, fontColor: UIColor.white, backgroundColor: alert.titleColor)
             loadingView.setContent(contentString: alert.alertContent, font: alert.buttonFont, fontColor: UIColor.black, backgroundColor: UIColor.lightGray)
             setAlertStyle(style: alert.alertStyle)
-            loadingView.actions.buttons = [singleButton]
-            loadingView.actions.setupButtons(buttonColors: alert.buttonColors)
+            loadingView.addButtonsToAction(button: [singleButton], buttonColors: alert.buttonColors)
         case .twoButton:
             leftButton = UIButton()
             rightButton = UIButton()
@@ -112,8 +119,7 @@ public final class AlertView: UIView {
             loadingView.setTitle(titleString: "Two Button Alert", font: alert.buttonFont, fontColor: UIColor.white, backgroundColor: alert.titleColor)
             loadingView.setContent(contentString: alert.alertContent, font: alert.buttonFont, fontColor: UIColor.black, backgroundColor: UIColor.lightGray)
             setAlertStyle(style: alert.alertStyle)
-            loadingView.actions.buttons = [leftButton, rightButton]
-            loadingView.actions.setupButtons(buttonColors: [UIColor.red, UIColor.blue])
+            loadingView.addButtonsToAction(button: [leftButton, rightButton], buttonColors:  [UIColor.red, UIColor.blue])
         }
     }
     
@@ -148,6 +154,11 @@ public final class AlertView: UIView {
     func didTapSingleButton(sender: UIButton) {
         print("single button")
         delegate?.didTapSingleButton(sender)
+    }
+    
+    func removeView(viewController: UIViewController) {
+        loadingView.removeFromSuperview()
+        removeFromSuperview()
     }
     
     func didTapLeftButton(sender:UIButton) {
