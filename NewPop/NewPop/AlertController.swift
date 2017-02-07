@@ -40,6 +40,24 @@ class AlertController: UIViewController {
         baseAlert.showAlert(viewController: self)
     }
     
+    func showView() {
+        baseAlert.showAlert(viewController: self)
+    }
+    
+    func hideView() {
+        baseAlert.hideAlert(viewController: self)
+    }
+    
+//    func addControllerAsChild(viewController: UIViewController) {
+//        alertController.delegate = self
+//        alertController.baseAlert.delegate = self
+//        addChildViewController(viewController)
+//        view.addSubview(viewController.view)
+//        viewController.view.frame = view.bounds
+//        viewController.didMove(toParentViewController: self)
+//        didMoveToParent()
+//    }
+    
     dynamic func changeBackgroundColor() {
         view.backgroundColor = UIColor.green
     }
@@ -53,6 +71,4 @@ class AlertController: UIViewController {
         print("didRemoveFromParent()")
         delegate?.didRemoveFromParent()
     }
-    
-
 }

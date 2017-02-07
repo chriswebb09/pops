@@ -37,7 +37,7 @@ public final class AlertView: UIView {
     
     weak var delegate: AlertViewDelegate?
     
-   private var containerView: UIView = {
+    private var _containerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = UIColor.clear
         return containerView
@@ -85,11 +85,11 @@ public final class AlertView: UIView {
     func addContainerOverlay(isSet: Bool) {
         if isSet {
             overlay.alpha = 0.2
-            overlay.frame = containerView.frame
+            overlay.frame = _containerView.frame
             overlay.backgroundColor = UIColor.black
-            containerView.addSubview(overlay)
-            containerView.bringSubview(toFront: overlay)
-            containerView.bringSubview(toFront: loadingView)
+            _containerView.addSubview(overlay)
+            _containerView.bringSubview(toFront: overlay)
+            _containerView.bringSubview(toFront: loadingView)
         }
     }
     
@@ -133,18 +133,23 @@ public final class AlertView: UIView {
         }
     }
     
+    
+    func setupLoadingView(type: AlertType) {
+        
+    }
+    
     public func showAlert(viewController: UIViewController) {
-        containerView.isHidden = false
-        containerView.frame = UIScreen.main.bounds
-        containerView.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+        _containerView.isHidden = false
+        _containerView.frame = UIScreen.main.bounds
+        _containerView.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
         _addLoadingView()
         _addSubviews(viewController: viewController)
-        viewController.view.bringSubview(toFront: containerView)
+        viewController.view.bringSubview(toFront: _containerView)
     }
     
     public func hideAlert(viewController: UIViewController) {
-        viewController.view.sendSubview(toBack: containerView)
-        containerView.isHidden = true
+        viewController.view.sendSubview(toBack: _containerView)
+        _containerView.isHidden = true
     }
     
     private func _addLoadingView() {
@@ -157,8 +162,8 @@ public final class AlertView: UIView {
     private func _addSubviews(viewController: UIViewController) {
         print("_addSubviews")
         _addLoadingView()
-        containerView.addSubview(loadingView)
-        viewController.view.addSubview(containerView)
+        _containerView.addSubview(loadingView)
+        viewController.view.addSubview(_containerView)
     }
     
     func didTapSingleButton(sender: UIButton) {

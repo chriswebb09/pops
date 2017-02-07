@@ -31,21 +31,21 @@ class BaseAlert: UIView {
     
     weak var delegate: BaseAlertDelegate?
     
-    private var banner: BannerView = {
+    private var _banner: BannerView = {
         let titleView = BannerView()
         titleView.backgroundColor = UIColor.blue
         titleView.layoutSubviews()
         return titleView
     }()
     
-    private var content: ContentView = {
+    private var _content: ContentView = {
         let contentView = ContentView()
         contentView.backgroundColor = UIColor.white
         contentView.layoutSubviews()
         return contentView
     }()
     
-    private var actions: ActionsView = {
+    private var _actions: ActionsView = {
         let actionsView = ActionsView()
         actionsView.layoutSubviews()
         actionsView.backgroundColor = UIColor.lightGray
@@ -56,7 +56,7 @@ class BaseAlert: UIView {
     
     override func layoutSubviews() {
         print("layoutSubviews()")
-        views = [banner, content, actions]
+        views = [_banner, _content, _actions]
         _setup()
         super.layoutSubviews()
     }
@@ -70,12 +70,12 @@ class BaseAlert: UIView {
         _ = views.map { $0.widthAnchor.constraint(equalTo: widthAnchor).isActive = true }
         _ = views.map { $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive  = true }
         
-        setHeights(banners: [banner, actions])
+        setHeights(banners: [_banner, _actions])
         
-        content.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
-        banner.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        content.topAnchor.constraint(equalTo: banner.bottomAnchor).isActive = true
-        actions.topAnchor.constraint(equalTo: content.bottomAnchor).isActive = true
+        _content.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
+        _banner.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        _content.topAnchor.constraint(equalTo: _banner.bottomAnchor).isActive = true
+        _actions.topAnchor.constraint(equalTo: _content.bottomAnchor).isActive = true
         
         backgroundColor = UIColor.white
     }
@@ -94,31 +94,31 @@ class BaseAlert: UIView {
     
     public func setTitle(titleString:String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
         print("here")
-        banner.setTitle(contentString: titleString)
-        banner.setBannerColor(bannerColor: backgroundColor)
-        banner.setFont(font: font)
-        banner.setFontColor(fontColor: fontColor)
+        _banner.setTitle(contentString: titleString)
+        _banner.setBannerColor(bannerColor: backgroundColor)
+        _banner.setFont(font: font)
+        _banner.setFontColor(fontColor: fontColor)
         print("\(titleString)")
     }
     
     public func setContent(contentString: String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
-        content.setContent(contentString: contentString)
-        content.setContentBackground(color: backgroundColor)
-        content.setContentFont(font: font)
-        content.setFontColor(color: fontColor)
+        _content.setContent(contentString: contentString)
+        _content.setContentBackground(color: backgroundColor)
+        _content.setContentFont(font: font)
+        _content.setFontColor(color: fontColor)
     }
     
-    func addButtonsToAction(button:[UIButton], buttonColors:[UIColor]) {
-        actions.buttons = button
-        actions.setupButtons(buttonColors: buttonColors)
+    func addButtonsToAction(button: [UIButton], buttonColors: [UIColor]) {
+        _actions.buttons = button
+        _actions.setupButtons(buttonColors: buttonColors)
     }
     
-    func didTapLeftButton(sender:UIButton) {
+    func didTapLeftButton(sender: UIButton) {
         print("tapped in view")
         delegate?.didTapLeftButton(sender)
     }
     
-    func didTapRightButton(sender:UIButton) {
+    func didTapRightButton(sender: UIButton) {
         delegate?.didTapRightButtonTwo(sender)
     }
 }
