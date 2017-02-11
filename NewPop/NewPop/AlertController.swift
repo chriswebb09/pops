@@ -5,7 +5,7 @@ protocol AlertControllerDelegate: class {
     func didRemoveFromParent()
 }
 
-class AlertController: UIViewController {
+public class AlertController: UIViewController {
     
     var baseAlert: AlertView = AlertView()
     var alert: Alert!
@@ -17,29 +17,31 @@ class AlertController: UIViewController {
         removeFromParentViewController()
     }
     
-    override func viewDidLoad() {
+   public override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
 
 extension AlertController {
     
-    func addOverlay(added: Bool) {
+    public func addOverlay(added: Bool) {
         overlayIsEnabled = added
         baseAlert.addContainerOverlay(isSet: overlayIsEnabled!)
     }
     
     func setAlert(alert: Alert, viewController: UIViewController) {
+        
         self.alert = alert
+        
         baseAlert.setupAlert(alert: alert)
         baseAlert.showAlert(viewController: self)
     }
     
-    func showView() {
+    public func showView() {
         baseAlert.showAlert(viewController: self)
     }
     
-    func hideView() {
+    public func hideView() {
         baseAlert.hideAlert(viewController: self)
     }
 }
@@ -58,7 +60,7 @@ extension AlertController {
         delegate?.didRemoveFromParent()
     }
     
-    func removeAlert(vc: UIViewController) {
+    public func removeAlert(vc: UIViewController) {
         
         baseAlert.removeOverlay()
         baseAlert.removeView(viewController: vc)

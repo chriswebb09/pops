@@ -39,8 +39,10 @@ public final class AlertView: UIView {
     var loadingView: BaseAlert = {
         let loadingView = BaseAlert()
         loadingView.layoutSubviews()
+        
         loadingView.layer.cornerRadius = 6
         loadingView.backgroundColor = UIColor.white
+        
         return loadingView
     }()
     
@@ -57,6 +59,7 @@ public final class AlertView: UIView {
     }
     
     func setAlertStyle(style: AlertStyle) {
+        
         switch style {
             
         case .boxed:

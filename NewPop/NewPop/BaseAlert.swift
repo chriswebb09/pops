@@ -61,7 +61,7 @@ class BaseAlert: UIView {
         _ = views.map { $0.widthAnchor.constraint(equalTo: widthAnchor).isActive = true }
         _ = views.map { $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive  = true }
         
-        setHeights(banners: [_banner, _actions])
+        _setHeights(banners: [_banner, _actions])
         
         _content.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
         
@@ -81,7 +81,7 @@ class BaseAlert: UIView {
         }
     }
     
-    private func setHeights(banners: [UIView]) {
+    private func _setHeights(banners: [UIView]) {
         _ = banners.map { $0.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25).isActive = true }
     }
     
@@ -99,16 +99,16 @@ class BaseAlert: UIView {
         _content.setFontColor(color: fontColor)
     }
     
-    func addButtonsToAction(button: [UIButton], buttonColors: [UIColor]) {
+    public func addButtonsToAction(button: [UIButton], buttonColors: [UIColor]) {
         _actions.buttons = button
         _actions.setupButtons(buttonColors: buttonColors)
     }
     
-    func didTapLeftButton(sender: UIButton) {
+    public func didTapLeftButton(sender: UIButton) {
         delegate?.didTapLeftButton(sender)
     }
     
-    func didTapRightButton(sender: UIButton) {
+    public func didTapRightButton(sender: UIButton) {
         delegate?.didTapRightButtonTwo(sender)
     }
 }
