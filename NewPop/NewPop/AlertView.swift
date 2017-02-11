@@ -30,7 +30,6 @@ public final class AlertView: UIView {
     var rightButton: UIButton!
     var singleButton: UIButton!
     
-    
     deinit {
         loadingView.removeFromSuperview()
     }
@@ -150,6 +149,10 @@ public final class AlertView: UIView {
     public func hideAlert(viewController: UIViewController) {
         viewController.view.sendSubview(toBack: _containerView)
         _containerView.isHidden = true
+    }
+    
+    func createAlertModel(title: String, content: String, buttonTitles: [String]) -> Alert {
+        return Alert(title: title, content: content, buttonTitles: buttonTitles)
     }
     
     private func _addLoadingView() {

@@ -28,7 +28,9 @@ class AlertController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+}
+
+extension AlertController {
     func addOverlay(added: Bool) {
         overlayIsEnabled = added
         baseAlert.addContainerOverlay(isSet: overlayIsEnabled!)
@@ -47,16 +49,9 @@ class AlertController: UIViewController {
     func hideView() {
         baseAlert.hideAlert(viewController: self)
     }
-    
-//    func addControllerAsChild(viewController: UIViewController) {
-//        alertController.delegate = self
-//        alertController.baseAlert.delegate = self
-//        addChildViewController(viewController)
-//        view.addSubview(viewController.view)
-//        viewController.view.frame = view.bounds
-//        viewController.didMove(toParentViewController: self)
-//        didMoveToParent()
-//    }
+}
+
+extension AlertController {
     
     dynamic func changeBackgroundColor() {
         view.backgroundColor = UIColor.green
@@ -70,5 +65,11 @@ class AlertController: UIViewController {
     func didRemoveFromParent() {
         print("didRemoveFromParent()")
         delegate?.didRemoveFromParent()
+    }
+    
+    func removeAlert(vc: UIViewController) {
+        baseAlert.removeOverlay()
+        baseAlert.removeView(viewController: vc)
+        removeFromParentViewController()
     }
 }

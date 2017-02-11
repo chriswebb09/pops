@@ -28,10 +28,10 @@ extension ViewController: AlertViewDelegate {
     
     func setupAlert() {
         self.alert =
-            Alert(alertType: .oneButton,
-                  alertStyle: .boxedBordered,
-                  alertTitle: "New Alert",
-                  alertContent: "Alert Content",
+            Alert(type: .oneButton,
+                  style: .boxedBordered,
+                  title: "New Alert",
+                  content: "Alert Content",
                   buttonTitles: ["Button"],
                   buttonColors: [UIColor.red],
                   buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
@@ -54,12 +54,12 @@ extension ViewController: AlertViewDelegate {
         didMoveToParent()
     }
     
+}
+
+extension ViewController {
+
     dynamic func didTapLeftButton(_ sender: UIButton) {
-        print("left tap")
-        alertController.baseAlert.removeOverlay()
-        alertController.baseAlert.removeView(viewController: self)
-        alertController.removeFromParentViewController()
-        addGestureToView(view: view)
+        alertController.removeAlert(vc: self)
     }
     
     dynamic func didTapRightButton(_ sender: UIButton) {
@@ -72,10 +72,10 @@ extension ViewController: AlertViewDelegate {
         print("singleTap")
         alertController.removeFromParentViewController()
         alertController.baseAlert.removeView(viewController: self)
-        self.alert = Alert(alertType: .twoButton,
-                           alertStyle: .roundedBordered,
-                           alertTitle: "New Alert",
-                           alertContent: "Alert Content",
+        self.alert = Alert(type: .twoButton,
+                           style: .roundedBordered,
+                           title: "New Alert",
+                           content: "Alert Content",
                            buttonTitles: ["Left Button", "Right Button"],
                            buttonColors: [UIColor.red, UIColor.blue],
                            buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
@@ -93,10 +93,10 @@ extension ViewController: AlertViewDelegate {
     }
     
     dynamic func handleTap(sender: UITapGestureRecognizer? = nil) {
-        self.alert = Alert(alertType: .twoButton,
-                           alertStyle: .roundedBordered,
-                           alertTitle: "Next Alert",
-                           alertContent: "Next Alert",
+        self.alert = Alert(type: .twoButton,
+                           style: .roundedBordered,
+                           title: "Next Alert",
+                           content: "Next Alert",
                            buttonTitles: ["Left Button", "Right Button"],
                            buttonColors: [UIColor.red, UIColor.blue],
                            buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,

@@ -38,11 +38,9 @@ class NewPopTests: XCTestCase {
         viewController.viewDidLoad()
         let alertController = AlertController()
         alertController.delegate = viewController
-        let alert =  Alert(alertType: .twoButton, alertStyle: .roundedBordered, alertTitle: "Next Alert", alertContent: "Next Alert", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "HelveticaNeue", size: 17)!, contentFontColor: UIColor.black)
+        let alert =  Alert(type: .twoButton, style: .roundedBordered, title: "Next Alert", content: "Next Alert", buttonTitles: ["Left Button", "Right Button"], buttonColors: [UIColor.red, UIColor.blue], buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleFont: UIFont(name: "Avenir-Heavy", size: 17)!, titleColor: UIColor.purple, titleFontColor: UIColor.white, contentBackground: UIColor.lightGray, contentFont: UIFont(name: "HelveticaNeue", size: 17)!, contentFontColor: UIColor.black)
         alertController.setAlert(alert: alert, viewController: viewController)
         XCTAssert(alertController.baseAlert != nil, "BaseAlert is not nil")
-        print(alertController.baseAlert.testTitle())
-        XCTAssert(alertController.baseAlert.testTitle() == "Two Button Alert", "\(alertController.baseAlert.testTitle())")
     }
     
     func testPerformanceExample() {
