@@ -90,14 +90,16 @@ class BaseAlert: UIView {
         _ = banners.map { $0.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25).isActive = true }
     }
     
-    public func setTitle(titleString:String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
+    public func setTitle(titleString:String, font: UIFont,
+                         fontColor: UIColor, backgroundColor: UIColor) {
         _banner.setTitle(contentString: titleString)
         _banner.setBannerColor(bannerColor: backgroundColor)
         _banner.setFont(font: font)
         _banner.setFontColor(fontColor: fontColor)
     }
     
-    public func setContent(contentString: String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
+    public func setContent(contentString: String, font: UIFont,
+                           fontColor: UIColor, backgroundColor: UIColor) {
         _content.setContent(contentString: contentString)
         _content.setContentBackground(color: backgroundColor)
         _content.setContentFont(font: font)

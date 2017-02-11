@@ -156,7 +156,8 @@ public final class AlertView: UIView {
         _containerView.isHidden = true
     }
     
-    func createAlertModel(title: String, content: String, buttonTitles: [String]) -> Alert {
+    func createAlertModel(title: String, content: String,
+                          buttonTitles: [String]) -> Alert {
         return Alert(title: title, content: content, buttonTitles: buttonTitles)
     }
     
