@@ -66,14 +66,18 @@ public final class AlertView: UIView {
     
     func setAlertStyle(style: AlertStyle) {
         switch style {
+            
         case .boxed:
             loadingView.layer.cornerRadius = 0
+            
         case .rounded:
             loadingView.layer.cornerRadius = 5
+            
         case .boxedBordered:
             loadingView.layer.borderWidth = 1
             loadingView.layer.borderColor = UIColor.black.cgColor
             loadingView.layer.cornerRadius = 0
+            
         case .roundedBordered:
             loadingView.layer.borderWidth = 1
             loadingView.layer.borderColor = UIColor.black.cgColor
@@ -86,6 +90,7 @@ public final class AlertView: UIView {
             overlay.alpha = 0.2
             overlay.frame = _containerView.frame
             overlay.backgroundColor = UIColor.black
+            
             _containerView.addSubview(overlay)
             _containerView.bringSubview(toFront: overlay)
             _containerView.bringSubview(toFront: loadingView)
@@ -98,23 +103,31 @@ public final class AlertView: UIView {
     
     func setupAlert(alert: Alert) {
         setAlertStyle(style: alert.alertStyle)
+        
         switch alert.alertType {
+            
         case .oneButton:
             singleButton = UIButton()
+            
             singleButton.setTitle(alert.buttonTitles[0], for: .normal)
+            
             loadingView = OneButtonAlert()
             setupLoadingViewForAlert(alert: alert, buttons: [singleButton])
+            
         case .twoButton:
             leftButton = UIButton()
             rightButton = UIButton()
+            
             leftButton.setTitle(alert.buttonTitles[0], for: .normal)
             rightButton.setTitle(alert.buttonTitles[1], for: .normal)
+            
             loadingView = TwoButtonAlert()
             setupLoadingViewForAlert(alert: alert, buttons: [leftButton, rightButton])
         }
     }
     
     func setupLoadingViewForAlert(alert: Alert, buttons: [UIButton]) {
+        
         loadingView.setTitle(titleString: alert.alertTitle,
                              font: alert.titleFont,
                              fontColor: alert.titleFontColor,
@@ -124,17 +137,22 @@ public final class AlertView: UIView {
                                font: alert.contentFont,
                                fontColor: alert.contentFontColor,
                                backgroundColor: alert.contentBackground)
+        
         setAlertStyle(style: alert.alertStyle)
+        
         loadingView.addButtonsToAction(button: buttons, buttonColors: alert.buttonColors)
     }
     
    
     public func showAlert(viewController: UIViewController) {
+        
         _containerView.isHidden = false
         _containerView.frame = UIScreen.main.bounds
         _containerView.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+        
         _addLoadingView()
         _addSubviews(viewController: viewController)
+        
         viewController.view.bringSubview(toFront: _containerView)
     }
     
@@ -148,14 +166,12 @@ public final class AlertView: UIView {
     }
     
     private func _addLoadingView() {
-        print("_addLoadingView")
         loadingView.frame = CGRect(x:0, y:0, width: UIScreen.main.bounds.width * 0.9, height:UIScreen.main.bounds.height * 0.35)
         loadingView.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
         loadingView.clipsToBounds = true
     }
     
     private func _addSubviews(viewController: UIViewController) {
-        print("_addSubviews")
         _addLoadingView()
         _containerView.addSubview(loadingView)
         viewController.view.addSubview(_containerView)
