@@ -84,7 +84,7 @@ public final class AlertView: UIView {
         if isSet {
             overlay.alpha = 0.2
             overlay.frame = _containerView.frame
-            overlay.backgroundColor = UIColor.black
+            overlay.backgroundColor = .black
             
             _containerView.addSubview(overlay)
             _containerView.bringSubview(toFront: overlay)

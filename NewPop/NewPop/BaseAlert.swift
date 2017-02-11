@@ -25,22 +25,28 @@ class BaseAlert: UIView {
     
     private var _banner: BannerView = {
         let titleView = BannerView()
+        
         titleView.backgroundColor = UIColor.blue
         titleView.layoutSubviews()
+        
         return titleView
     }()
     
     private var _content: ContentView = {
         let contentView = ContentView()
+        
         contentView.backgroundColor = UIColor.white
         contentView.layoutSubviews()
+        
         return contentView
     }()
     
     private var _actions: ActionsView = {
         let actionsView = ActionsView()
+        
         actionsView.layoutSubviews()
         actionsView.backgroundColor = UIColor.lightGray
+        
         return actionsView
     }()
     
@@ -53,7 +59,6 @@ class BaseAlert: UIView {
     }
     
     private func _setup() {
-        print("_setup()")
         
         _ = views.map { addSubview($0) }
         

@@ -49,7 +49,7 @@ extension AlertController {
 extension AlertController {
     
     dynamic func changeBackgroundColor() {
-        view.backgroundColor = UIColor.green
+        view.backgroundColor = .green
     }
     
     func didMoveToParent() {

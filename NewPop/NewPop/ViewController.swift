@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         
         setupAlert()
         
@@ -29,14 +29,14 @@ extension ViewController: AlertViewDelegate {
                   title: "New Alert",
                   content: "Alert Content",
                   buttonTitles: ["Button"],
-                  buttonColors: [UIColor.red],
+                  buttonColors: [.red],
                   buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
                   titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                  titleColor: UIColor.purple,
-                  titleFontColor: UIColor.white,
-                  contentBackground: UIColor.green,
+                  titleColor: .purple,
+                  titleFontColor: .white,
+                  contentBackground: .green,
                   contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                  contentFontColor: UIColor.black)
+                  contentFontColor: .black)
     }
     
     func addControllerAsChild(viewController: UIViewController) {
@@ -74,14 +74,14 @@ extension ViewController {
                            title: "New Alert",
                            content: "Alert Content",
                            buttonTitles: ["Left Button", "Right Button"],
-                           buttonColors: [UIColor.red, UIColor.blue],
+                           buttonColors: [.red, .blue],
                            buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
                            titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                           titleColor: UIColor.purple,
-                           titleFontColor: UIColor.white,
-                           contentBackground: UIColor.white,
+                           titleColor: .purple,
+                           titleFontColor: .white,
+                           contentBackground: .white,
                            contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                           contentFontColor: UIColor.black)
+                           contentFontColor: .white)
         
         alertController.addOverlay(added: true)
         alertController.setAlert(alert: self.alert, viewController: self)
@@ -99,14 +99,14 @@ extension ViewController {
                            title: "Next Alert",
                            content: "Next Alert",
                            buttonTitles: ["Left Button", "Right Button"],
-                           buttonColors: [UIColor.red, UIColor.blue],
+                           buttonColors: [.red, .blue],
                            buttonFont: UIFont(name: "Avenir-Heavy", size: 17)!,
                            titleFont: UIFont(name: "Avenir-Heavy", size: 17)!,
-                           titleColor: UIColor.purple,
-                           titleFontColor: UIColor.white,
-                           contentBackground: UIColor.lightGray,
+                           titleColor: .purple,
+                           titleFontColor: .white,
+                           contentBackground: .lightGray,
                            contentFont: UIFont(name: "HelveticaNeue", size: 17)!,
-                           contentFontColor: UIColor.black)
+                           contentFontColor: .black)
         
         alertController.setAlert(alert: self.alert, viewController: self)
     }
