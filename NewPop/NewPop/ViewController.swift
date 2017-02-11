@@ -16,8 +16,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = UIColor.white
+        
         setupAlert()
+        
         alertController.setAlert(alert: self.alert, viewController: self)
         alertController.baseAlert.singleButton.addTarget(self, action: #selector(didTapSingleButton(_:)), for: .touchUpInside)
         addControllerAsChild(viewController: alertController)
@@ -43,7 +46,6 @@ extension ViewController: AlertViewDelegate {
                   contentFontColor: UIColor.black)
     }
     
-    
     func addControllerAsChild(viewController: UIViewController) {
         alertController.delegate = self
         alertController.baseAlert.delegate = self
@@ -53,7 +55,6 @@ extension ViewController: AlertViewDelegate {
         viewController.didMove(toParentViewController: self)
         didMoveToParent()
     }
-    
 }
 
 extension ViewController {
@@ -70,8 +71,10 @@ extension ViewController {
     
     dynamic func didTapSingleButton(_ sender: UIButton) {
         print("singleTap")
+        
         alertController.removeFromParentViewController()
         alertController.baseAlert.removeView(viewController: self)
+
         self.alert = Alert(type: .twoButton,
                            style: .roundedBordered,
                            title: "New Alert",
@@ -87,9 +90,10 @@ extension ViewController {
                            contentFontColor: UIColor.black)
         alertController.addOverlay(added: true)
         alertController.setAlert(alert: self.alert, viewController: self)
-        addControllerAsChild(viewController: alertController)
         alertController.baseAlert.leftButton.addTarget(self, action: #selector(didTapLeftButton(_:)), for: .touchUpInside)
         alertController.baseAlert.rightButton.addTarget(self, action: #selector(didTapRightButton(_:)), for: .touchUpInside)
+
+        addControllerAsChild(viewController: alertController)
     }
     
     dynamic func handleTap(sender: UITapGestureRecognizer? = nil) {
@@ -109,7 +113,6 @@ extension ViewController {
         alertController.setAlert(alert: self.alert, viewController: self)
     }
 }
-
 
 extension ViewController: AlertControllerDelegate {
     

@@ -31,6 +31,7 @@ class AlertController: UIViewController {
 }
 
 extension AlertController {
+    
     func addOverlay(added: Bool) {
         overlayIsEnabled = added
         baseAlert.addContainerOverlay(isSet: overlayIsEnabled!)

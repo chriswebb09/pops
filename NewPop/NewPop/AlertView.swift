@@ -103,40 +103,32 @@ public final class AlertView: UIView {
             singleButton = UIButton()
             singleButton.setTitle(alert.buttonTitles[0], for: .normal)
             loadingView = OneButtonAlert()
-            loadingView.setTitle(titleString: alert.alertTitle,
-                                 font: alert.titleFont,
-                                 fontColor: alert.titleFontColor,
-                                 backgroundColor: alert.titleColor)
-            loadingView.setContent(contentString: alert.alertContent,
-                                   font: alert.contentFont,
-                                   fontColor: alert.contentFontColor,
-                                   backgroundColor: alert.contentBackground)
-            setAlertStyle(style: alert.alertStyle)
-            loadingView.addButtonsToAction(button: [singleButton], buttonColors: alert.buttonColors)
+            setupLoadingViewForAlert(alert: alert, buttons: [singleButton])
         case .twoButton:
             leftButton = UIButton()
             rightButton = UIButton()
             leftButton.setTitle(alert.buttonTitles[0], for: .normal)
             rightButton.setTitle(alert.buttonTitles[1], for: .normal)
             loadingView = TwoButtonAlert()
-            loadingView.setTitle(titleString: alert.alertTitle,
-                                 font: alert.titleFont,
-                                 fontColor: alert.titleFontColor,
-                                 backgroundColor: alert.titleColor)
-            loadingView.setContent(contentString: alert.alertContent,
-                                   font: alert.contentFont,
-                                   fontColor: alert.contentFontColor,
-                                   backgroundColor: alert.contentBackground)
-            setAlertStyle(style: alert.alertStyle)
-            loadingView.addButtonsToAction(button: [leftButton, rightButton], buttonColors:  [UIColor.red, UIColor.blue])
+            setupLoadingViewForAlert(alert: alert, buttons: [leftButton, rightButton])
         }
     }
     
-    
-    func setupLoadingView(type: AlertType) {
+    func setupLoadingViewForAlert(alert: Alert, buttons: [UIButton]) {
+        loadingView.setTitle(titleString: alert.alertTitle,
+                             font: alert.titleFont,
+                             fontColor: alert.titleFontColor,
+                             backgroundColor: alert.titleColor)
         
+        loadingView.setContent(contentString: alert.alertContent,
+                               font: alert.contentFont,
+                               fontColor: alert.contentFontColor,
+                               backgroundColor: alert.contentBackground)
+        setAlertStyle(style: alert.alertStyle)
+        loadingView.addButtonsToAction(button: buttons, buttonColors: alert.buttonColors)
     }
     
+   
     public func showAlert(viewController: UIViewController) {
         _containerView.isHidden = false
         _containerView.frame = UIScreen.main.bounds
