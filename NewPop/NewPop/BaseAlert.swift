@@ -55,7 +55,6 @@ class BaseAlert: UIView {
     var views = [UIView]()
     
     override func layoutSubviews() {
-        print("layoutSubviews()")
         views = [_banner, _content, _actions]
         _setup()
         super.layoutSubviews()
@@ -73,6 +72,7 @@ class BaseAlert: UIView {
         setHeights(banners: [_banner, _actions])
         
         _content.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
+        
         _banner.topAnchor.constraint(equalTo: topAnchor).isActive = true
         _content.topAnchor.constraint(equalTo: _banner.bottomAnchor).isActive = true
         _actions.topAnchor.constraint(equalTo: _content.bottomAnchor).isActive = true
@@ -82,6 +82,7 @@ class BaseAlert: UIView {
 
     func setupAlert(alert: Alert) {
         baseAlert = alert
+        
         if let alertTemplate = baseAlert {
             setTitle(titleString: alertTemplate.alertTitle, font: alertTemplate.titleFont, fontColor: alertTemplate.titleFontColor, backgroundColor: alertTemplate.titleColor)
             setContent(contentString: alertTemplate.alertContent, font: alertTemplate.contentFont, fontColor: alertTemplate.contentFontColor, backgroundColor: alertTemplate.contentBackground)
@@ -93,12 +94,10 @@ class BaseAlert: UIView {
     }
     
     public func setTitle(titleString:String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
-        print("here")
         _banner.setTitle(contentString: titleString)
         _banner.setBannerColor(bannerColor: backgroundColor)
         _banner.setFont(font: font)
         _banner.setFontColor(fontColor: fontColor)
-        print("\(titleString)")
     }
     
     public func setContent(contentString: String, font: UIFont, fontColor: UIColor, backgroundColor: UIColor) {
@@ -114,7 +113,6 @@ class BaseAlert: UIView {
     }
     
     func didTapLeftButton(sender: UIButton) {
-        print("tapped in view")
         delegate?.didTapLeftButton(sender)
     }
     

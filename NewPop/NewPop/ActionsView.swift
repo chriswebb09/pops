@@ -17,13 +17,17 @@ class ActionsView: UIView {
     }
     
     internal func setupButtons(buttonColors: [UIColor]) {
+        
         let zipped = zip(buttons, buttonColors)
         _ = zipped.flatMap { $0.0.backgroundColor = $0.1 }
-        dump(buttons)
+        
         buttons.forEach { button in
             addSubview(button)
+            
             button.translatesAutoresizingMaskIntoConstraints = false
+            
             button.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+            
             button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
             button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: (CGFloat(1) / CGFloat(buttons.count))).isActive = true
         }
