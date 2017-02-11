@@ -59,18 +59,18 @@ extension AlertController {
     }
     
     func didMoveToParent() {
-        print("didMoveToParent()")
         delegate?.didMoveToParent()
     }
     
     func didRemoveFromParent() {
-        print("didRemoveFromParent()")
         delegate?.didRemoveFromParent()
     }
     
     func removeAlert(vc: UIViewController) {
+        
         baseAlert.removeOverlay()
         baseAlert.removeView(viewController: vc)
+        
         removeFromParentViewController()
     }
 }

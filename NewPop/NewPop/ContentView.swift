@@ -23,9 +23,12 @@ class ContentView: UIView {
     
     private func _setupConstraints() {
         addSubview(_contentLabel)
+        
         _contentLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         _contentLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         _contentLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
         _contentLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75).isActive = true
         _contentLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
     }
