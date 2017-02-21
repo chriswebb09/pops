@@ -75,12 +75,10 @@ class BaseAlert: UIView {
     func setupAlert(alert: Alert) {
         baseAlert = alert
         if let alertTemplate = baseAlert {
-            
             setTitle(titleString: alertTemplate.alertTitle,
                      font: alertTemplate.titleFont,
                      fontColor: alertTemplate.titleFontColor,
                      backgroundColor: alertTemplate.titleColor)
-            
             setContent(contentString: alertTemplate.alertContent,
                        font: alertTemplate.contentFont,
                        fontColor: alertTemplate.contentFontColor,
