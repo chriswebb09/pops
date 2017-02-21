@@ -17,12 +17,9 @@ public class AlertController: UIViewController {
         removeFromParentViewController()
     }
     
-   public override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
     }
-}
-
-extension AlertController {
     
     public func addOverlay(added: Bool) {
         overlayIsEnabled = added
@@ -43,9 +40,6 @@ extension AlertController {
     public func hideView() {
         baseAlert.hideAlert(viewController: self)
     }
-}
-
-extension AlertController {
     
     dynamic func changeBackgroundColor() {
         view.backgroundColor = .green
