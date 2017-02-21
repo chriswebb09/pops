@@ -15,11 +15,9 @@ class ActionsView: UIView {
         
         buttons.forEach { button in
             addSubview(button)
-            
             button.translatesAutoresizingMaskIntoConstraints = false
             
             button.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-            
             button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
             button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: (CGFloat(1) / CGFloat(buttons.count))).isActive = true
         }

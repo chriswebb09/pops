@@ -30,7 +30,6 @@ extension AlertController {
     }
     
     func setAlert(alert: Alert, viewController: UIViewController) {
-        
         self.alert = alert
         
         baseAlert.setupAlert(alert: alert)
@@ -61,7 +60,6 @@ extension AlertController {
     }
     
     public func removeAlert(vc: UIViewController) {
-        
         baseAlert.removeOverlay()
         baseAlert.removeView(viewController: vc)
         

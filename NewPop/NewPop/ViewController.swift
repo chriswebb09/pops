@@ -8,14 +8,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
-        
         setupAlert()
-        
         alertController.setAlert(alert: self.alert, viewController: self)
         alertController.baseAlert.singleButton.addTarget(self, action: #selector(didTapSingleButton(_:)), for: .touchUpInside)
-        
         addControllerAsChild(viewController: alertController)
     }
 }
@@ -47,14 +44,14 @@ extension ViewController: AlertViewDelegate {
         
         view.addSubview(viewController.view)
         viewController.view.frame = view.bounds
-        
         viewController.didMove(toParentViewController: self)
+        
         didMoveToParent()
     }
 }
 
 extension ViewController {
-
+    
     dynamic func didTapLeftButton(_ sender: UIButton) {
         alertController.removeAlert(vc: self)
     }
@@ -65,10 +62,8 @@ extension ViewController {
     }
     
     dynamic func didTapSingleButton(_ sender: UIButton) {
-        
         alertController.removeFromParentViewController()
         alertController.baseAlert.removeView(viewController: self)
-
         self.alert = Alert(type: .twoButton,
                            style: .roundedBordered,
                            title: "New Alert",
@@ -82,18 +77,14 @@ extension ViewController {
                            contentBackground: .white,
                            contentFont: UIFont(name: "Avenir-Heavy", size: 17)!,
                            contentFontColor: .white)
-        
         alertController.addOverlay(added: true)
         alertController.setAlert(alert: self.alert, viewController: self)
-        
         alertController.baseAlert.leftButton.addTarget(self, action: #selector(didTapLeftButton(_:)), for: .touchUpInside)
         alertController.baseAlert.rightButton.addTarget(self, action: #selector(didTapRightButton(_:)), for: .touchUpInside)
-
         addControllerAsChild(viewController: alertController)
     }
     
     dynamic func handleTap(sender: UITapGestureRecognizer? = nil) {
-        
         self.alert = Alert(type: .twoButton,
                            style: .roundedBordered,
                            title: "Next Alert",
@@ -107,7 +98,6 @@ extension ViewController {
                            contentBackground: .lightGray,
                            contentFont: UIFont(name: "HelveticaNeue", size: 17)!,
                            contentFontColor: .black)
-        
         alertController.setAlert(alert: self.alert, viewController: self)
     }
 }

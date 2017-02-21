@@ -14,9 +14,7 @@ class ContentView: UIView {
     }
     
     private func _setupConstraints() {
-        
         addSubview(_contentLabel)
-        
         _contentLabel.translatesAutoresizingMaskIntoConstraints = false
         
         _contentLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

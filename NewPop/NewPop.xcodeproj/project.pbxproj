@@ -121,24 +121,17 @@
 		A79B5A2A1E478FD9001C6C8D /* NewPop */ = {
 			isa = PBXGroup;
 			children = (
-				A79B5A2B1E478FD9001C6C8D /* AppDelegate.swift */,
-				A79B5A591E478FEE001C6C8D /* AlertController.swift */,
-				A79B5A2D1E478FD9001C6C8D /* ViewController.swift */,
-				A79B5A6D1E479BFB001C6C8D /* AlertView.swift */,
 				A79B5A321E478FD9001C6C8D /* Assets.xcassets */,
 				A79B5A341E478FD9001C6C8D /* LaunchScreen.storyboard */,
 				A79B5A371E478FD9001C6C8D /* Info.plist */,
-				A79B5A5B1E479010001C6C8D /* Alert.swift */,
-				A79B5A5D1E47901F001C6C8D /* AlertStyle.swift */,
-				A79B5A5F1E479029001C6C8D /* AlertType.swift */,
-				A79B5A611E47903A001C6C8D /* BannerView.swift */,
-				A79B5A631E479048001C6C8D /* ContentView.swift */,
-				A79B5A651E479052001C6C8D /* ActionsView.swift */,
-				A79B5A671E4792B7001C6C8D /* OneButtonAlert.swift */,
-				A79B5A691E4792C2001C6C8D /* TwoButtonAlert.swift */,
-				A79B5A6B1E47933A001C6C8D /* BaseAlert.swift */,
-				A7E039D41E47EADD0098956B /* Constants.swift */,
-				A7E039D61E47EB070098956B /* ButtonTypes.swift */,
+				A79B5A2B1E478FD9001C6C8D /* AppDelegate.swift */,
+				A79B5A2D1E478FD9001C6C8D /* ViewController.swift */,
+				A79B5A591E478FEE001C6C8D /* AlertController.swift */,
+				A79B5A6D1E479BFB001C6C8D /* AlertView.swift */,
+				A7AABD5E1E5C47390052AF1B /* Models */,
+				A7AABD611E5C47770052AF1B /* Subviews */,
+				A7AABD601E5C47630052AF1B /* AlertTypes */,
+				A7AABD5F1E5C474D0052AF1B /* Extras */,
 			);
 			path = NewPop;
 			sourceTree = "<group>";
@@ -159,6 +152,45 @@
 				A79B5A4D1E478FD9001C6C8D /* Info.plist */,
 			);
 			path = NewPopUITests;
+			sourceTree = "<group>";
+		};
+		A7AABD5E1E5C47390052AF1B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A79B5A5F1E479029001C6C8D /* AlertType.swift */,
+				A79B5A5B1E479010001C6C8D /* Alert.swift */,
+				A79B5A5D1E47901F001C6C8D /* AlertStyle.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A7AABD5F1E5C474D0052AF1B /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				A7E039D41E47EADD0098956B /* Constants.swift */,
+				A7E039D61E47EB070098956B /* ButtonTypes.swift */,
+			);
+			name = Extras;
+			sourceTree = "<group>";
+		};
+		A7AABD601E5C47630052AF1B /* AlertTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A79B5A6B1E47933A001C6C8D /* BaseAlert.swift */,
+				A79B5A671E4792B7001C6C8D /* OneButtonAlert.swift */,
+				A79B5A691E4792C2001C6C8D /* TwoButtonAlert.swift */,
+			);
+			name = AlertTypes;
+			sourceTree = "<group>";
+		};
+		A7AABD611E5C47770052AF1B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				A79B5A611E47903A001C6C8D /* BannerView.swift */,
+				A79B5A631E479048001C6C8D /* ContentView.swift */,
+				A79B5A651E479052001C6C8D /* ActionsView.swift */,
+			);
+			name = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

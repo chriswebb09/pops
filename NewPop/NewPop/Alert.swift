@@ -1,6 +1,7 @@
 import UIKit
 
 struct Alert {
+    
     var alertType: AlertType
     var alertStyle: AlertStyle
     var alertTitle: String
